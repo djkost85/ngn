@@ -2,7 +2,7 @@ Ngn.regNamespace('Ngn.site.userGroup', true);
 
 Ngn.site.userGroup.InfoDialog = new Class({
   Extends: Ngn.Dialog.RequestForm,
-  Implements: [Ngn.BlockEditDialog.Static],
+  Implements: [Ngn.Dialog.BlockEdit.Static],
   
   options: {
     onSubmitSuccess: function() {
@@ -13,7 +13,7 @@ Ngn.site.userGroup.InfoDialog = new Class({
 });
 
 Ngn.site.userGroup.EditTreeTagsDialog = new Class({
-  Extends: Ngn.EditTreeTagsDialog,
+  Extends: Ngn.Dialog.TreeEdit.Tags,
   
   options: {
     actionUrl: '/userGroup'

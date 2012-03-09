@@ -21,7 +21,7 @@ Ngn.cp.PagesInterface = new Class({
   initialize: function() {
     this.eHandler = $('handler');
     this.eSubNav = $('subNav');
-    this.tree = new Ngn.TreeEditPages(
+    this.tree = new Ngn.TreeEdit.Pages.cp(
       this,
       'treeContainer',
       {

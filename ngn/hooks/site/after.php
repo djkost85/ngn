@@ -18,7 +18,7 @@ $this->d['authToCreate'] =
 if (
 $this->d['action'] == 'list' and 
 $this->d['canCreateAuth'] and 
-!$this->page['settings']['showFormOnDefault']) {
+empty($this->page['settings']['showFormOnDefault'])) {
   $defaultParam = '';
   if (!$this->d['params']) {
     $listPath = $this->d['page']['path'];

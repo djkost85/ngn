@@ -279,6 +279,7 @@ Ngn.frm.toObj = function(eContainer, except) {
 Ngn.frm.initTranslateField = function(eMasterField, eTranslatedField) {
   var eMasterField = $(eMasterField);
   var eTranslatedField = $(eTranslatedField);
+  //if (!eMasterField || !eTranslatedField) return;
   var translatedValueExists = eTranslatedField.get('value') ? true : false;
   var translatedFieldEdited = false;
   var translateField = function() {

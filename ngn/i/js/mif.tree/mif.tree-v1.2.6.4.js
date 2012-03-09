@@ -78,7 +78,10 @@ Mif.Tree = new Class({
     this.id = id;
     if(id != null) Mif.ids[id] = this;
     if (MooTools.version >= '1.2.2' && this.options.initialize) this.options.initialize.call(this);
+    this.init();
   },
+  
+  init: function() {},
   
   bound: function(){
     Array.each(arguments, function(name){
@@ -360,6 +363,12 @@ Mif.Tree.Node = new Class({
     if (id != null && id != undefined) Mif.ids[id] = this;
     this.tree.fireEvent('nodeCreate', [this]);
     this._property = ['id', 'name', 'cls', 'openIcon', 'closeIcon', 'openIconUrl', 'closeIconUrl', 'hidden'];
+    
+    if (this.openIcon == 'mif-tree-empty-icon') {
+      //c(this);
+      //throw new Error('!');
+    }
+    
   },
   
   $calculate: function(){
@@ -737,8 +746,9 @@ Mif.Tree.Draw = {
   },
   
   update: function(node){
-    if(!this.isUpdatable(node)) return null;
-    if(!node.hasChildren()) node.state.open = false;
+    if (!this.isUpdatable(node)) return null;
+    if (!node.hasChildren()) node.state.open = false;
+    
     node.getDOM('gadjet').className = 'mif-tree-gadjet mif-tree-gadjet-'+node.getGadjetType();
     if (node.closeIconUrl) {
       node.getDOM('icon').setStyle('background-image', 'url('+(node.isOpen() ? node.openIconUrl : node.closeIconUrl)+')');

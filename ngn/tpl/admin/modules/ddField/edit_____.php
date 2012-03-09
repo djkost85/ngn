@@ -98,9 +98,9 @@ window.addEvent('domready', function() {
     init_tagsTree: function(fieldName) {
       $('treeContainer').addClass('loader');
       new Ngn.Lib('mif.tree', function() {
-        Asset.javascript('../../../i/js/ngn/Ngn.TreeEditTags.js', {onload: function(){
+        Asset.javascript('../../../i/js/ngn/Ngn.TreeEdit.Tags.js', {onload: function(){
           $('treeContainer').removeClass('loader');
-          new Ngn.TreeEditTags(
+          new Ngn.TreeEdit.Tags(
             'treeContainer',
             'treeMenu',
             '<?= $fd['strName'] ?>',

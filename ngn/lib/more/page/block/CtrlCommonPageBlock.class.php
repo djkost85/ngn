@@ -9,7 +9,7 @@ class CtrlCommonPageBlock extends CtrlCommon {
     $this->ajaxOutput = $r['html'];//newarr;
   }
 
-  public function action_ajax_get2() {
+  public function action_ajax_getStatic() {
     $r = PageBlockCore::getStaticBlockHtmlData(
       $this->getParam(3),
       $this->getParam(4)

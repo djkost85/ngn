@@ -10,6 +10,7 @@ Ngn.TreeEdit = new Class({
     folderCloseIcon: 'mif-tree-folder-close-icon', // default css class close icon
     pageIcon: 'mif-tree-page-icon',  // default css class open icon
     mifTreeOptions: {}
+    // buttons: element container with buttons
   },
   
   /**
@@ -51,6 +52,11 @@ Ngn.TreeEdit = new Class({
         Ngn.bindSizes(this.container, this.eTreeShade);
       }.bind(this)).delay(10);
     }.bind(this));
+  },
+  
+  init: function() {
+    this.defaults.openIcon = this.options.folderOpenIcon;
+    this.defaults.closeIcon = this.options.folderCloseIcon;
   },
   
   loading: function(flag) {
@@ -328,12 +334,14 @@ Ngn.TreeEdit = new Class({
   },
   
   toggleButtons: function() {
-    for (var i in this.buttons) this.buttons[i].toggle(false);
+    for (var name in this.buttons) this.toggleButton(name, false);
+    var activeNames = this.getActiveButtonNames();
     this.tree.addEvent('selectChange', function(node) {
-      var names = this.getActiveButtonNames();
-      // включаем, если существует выбранный нод
-      for (var i=0; i<names.length; i++)
-        this.toggleButton(names[i], this.tree.selected);
+      if (node.tree.selected) {
+        // Включаем, если существует выбранный нод
+        for (var i=0; i<activeNames.length; i++)
+          this.toggleButton(activeNames[i], this.tree.selected);
+      }
     }.bind(this));
   },
   

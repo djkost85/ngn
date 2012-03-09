@@ -26,7 +26,7 @@ var setHeight = function() {
 
 $('body').addClass('twopanels');
 window.addEvent('domready', function() {
-  te = new Ngn.TreeEditTags(
+  te = new Ngn.TreeEdit.Tags(
     'treeContainer',
     '<?= $d['groupId'] ?>',
     { buttons: 'treeMenu' }

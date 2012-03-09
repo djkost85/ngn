@@ -1,5 +1,4 @@
-Ngn.TreeEditTags = new Class({
-  
+Ngn.TreeEdit.Tags = new Class({
   Extends: Ngn.TreeEdit,
   
   options: {
@@ -23,17 +22,6 @@ Ngn.TreeEditTags = new Class({
   toggleButtons: function() {
     this.parent();
     this.toggleButton('add', true);
-    this.tree.addEvent('selectChange', function(node) {
-      if (!node.tree.selected) {
-        for (var name in this.buttons) {
-          if (name != 'add')
-            this.toggleButton(name, false);
-        }
-        return;
-      }
-      this.toggleButton('rename', true);
-      this.toggleButton('delete', true);
-    }.bind(this));
   }
   
 });

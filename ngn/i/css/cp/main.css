@@ -1132,24 +1132,3 @@ padding-top: 5px;
 .newLayout #bottom {
 margin-top: 0px;
 }
-
-
-.browserAlert {
-border-radius: 5px;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
-border: 1px solid #CE5310;
-background: #ED702D;
-color: #FFFFFF;
-padding: 5px 10px;
-float: right;
-width: 240px;
-font-size: 11px;
-}
-.browserAlert a {
-color: #FFFFFF;
-}
-}
-
-

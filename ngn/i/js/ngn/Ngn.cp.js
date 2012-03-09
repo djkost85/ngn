@@ -15,17 +15,8 @@ Ngn.cp = {
     this.colorizeSelects();
     new Ngn.HidebleBar('bottom', 'down');
     new Ngn.HidebleBar('header', 'up');
-    this.addFirefoxAlert();
     Ngn.lightbox.add(document.getElements('a.lightbox'));
     Ngn.dialogable();
-  },
-  addFirefoxAlert: function() {
-    if (!Browser.Engine.gecko) {
-      new Element('div', {
-        'class': 'browserAlert',
-        'html': 'Если Вы хотите добиться максимально стабильной работы Панели управления, воспользуйтесь браузером <a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>' 
-      }).inject($('header').getElement('.pageTitle .cont'), 'top');
-    }
   },
   initHelp: function() {
     $$('a[class=help]').each(function(el){

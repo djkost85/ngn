@@ -1,10 +1,6 @@
-<?php
+<script>
 
-
-function asd() {}
-print gettype(asd());
-
-
-
-
-?>
+new Ngn.Dialog.NewModulePageSimple({
+  pageId: 0
+});
+</script>

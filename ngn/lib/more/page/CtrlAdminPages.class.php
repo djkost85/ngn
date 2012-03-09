@@ -179,6 +179,10 @@ class CtrlAdminPages extends CtrlAdminPagesBase {
     return $this->actionJsonFormUpdate(new NewModulePageForm($this->pageId));
   }
   
+  public function action_json_newModulePageSimple() {
+    return $this->actionJsonFormUpdate(new NewModulePageSimpleForm($this->pageId));
+  }
+  
   public function action_json_newPage() {
     return $this->actionJsonFormUpdate(new NewPageForm($this->pageId));
   }

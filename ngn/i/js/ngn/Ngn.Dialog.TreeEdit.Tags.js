@@ -1,26 +1,10 @@
-Ngn.Dialog.TreeResizeble = new Class({
-  Extends: Ngn.Dialog.Resizeble,
-  
-  getResizebleEl: function() {
-    return this.dialog.eTreeContainer;
-  }
-  
-});
-
-Ngn.EditTreeTagsDialog = new Class({
-  Extends: Ngn.Dialog,
-  Implements: [Ngn.BlockEditDialog.Dynamic],
+Ngn.Dialog.TreeEdit.Tags = new Class({
+  Extends: Ngn.Dialog.TreeEdit,
   
   options: {
     id: 'editTags',
     title: 'Редактирование рубрик',
-    footer: false,
-    width: 300,
-    //height: 250,
-    bindBuildMessageFunction: true,
-    dialogClass: 'dialog treeTagsDialog',
     actionUrl: '/admin/tags',
-    resizeble: Ngn.Dialog.TreeResizeble
     //data: {
     //  groupId: null
     //}
@@ -45,7 +29,7 @@ Ngn.EditTreeTagsDialog = new Class({
   init: function() {
     this.eTreeContainer = this.message.getElement('.treeContainer');
     this.eTreeMenu = this.message.getElement('.treeMenu');
-    var tree = new Ngn.TreeEditTags(
+    var tree = new Ngn.TreeEdit.Tags(
       this.eTreeContainer,
       this.options.data.groupId,
       {

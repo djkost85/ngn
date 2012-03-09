@@ -16,7 +16,7 @@ class PbvTags extends PbvAbstract {
 
   public function _html() {
     $selectedIds = array();
-  	if (!empty($this->oCC) and !empty($this->oCC->d['tagsSelected'])) {
+    if (!empty($this->oCC) and !empty($this->oCC->d['tagsSelected'])) {
       $tagsSelected = DdTagsHtml::treeToList($this->oCC->d['tagsSelected']);
       if (DdCore::isItemsController($this->oCC->page['controller'])) {
         $selectedIds = Arr::get($tagsSelected, 'id');
@@ -35,34 +35,26 @@ class PbvTags extends PbvAbstract {
       $html .= DdTagsHtml::treeUl(
         $nodes, 
         $dddd,
-      	$selectedIds,
+        $selectedIds,
         $this->oPBM['settings']['showNullCountTags']
       );
     }
-    $js = '';
     if (Misc::isAdmin())
-      $js = "
+      $this->js .= <<<JS
 var block = Ngn.pageBlocks.blocks[{$this->oPBM['id']}];
-block.addEditBlockBtn({
+block.replaceEditBlockBtn({
   name: 'tag2', title: 'Редактировать рубрики'
 }, function() {
-  new Ngn.EditTreeTagsDialog({
+  new Ngn.Dialog.TreeEdit.Tags({
     blockId: {$this->oPBM['id']},
-    width: 400,
-    //reduceHeight: true,
-    //height: 500,
     data: JSON.decode(block.eBlock.getElement('.bcont').getElement('.data').get('html'))
   });
 });
-";
+JS;
     if ($this->oPBM['settings']['hideSubLevels'])
-      $js = "
-new Ngn.UlMenu($('block_{$this->oPBM['id']}').getElement('ul'));";
-    if ($js) $html .= "<script>
-window.addEvent('domready', function() {
-  $js
-});
-</script>";
+      $this->js .= <<<JS
+new Ngn.UlMenu($('block_{$this->oPBM['id']}').getElement('ul'));
+JS;
     return $html;
   }
   

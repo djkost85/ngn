@@ -47,6 +47,4 @@ class PmiPhoto extends PmiDd {
     ),
   );
   
-  protected $pageLayout = 2;
-  
 }

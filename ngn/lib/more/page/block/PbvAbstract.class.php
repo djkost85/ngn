@@ -54,6 +54,7 @@ abstract class PbvAbstract {
   
   protected $moreLink;
   protected $buttons = array();
+  protected $js = '';
   
   public function html() {
     $titleHtml = '';
@@ -75,7 +76,11 @@ abstract class PbvAbstract {
         '</div>';
     }
     $html .= '<div class="bbody">'.$this->_html().'</div>';
-    return $html;
+    return $html.($this->js ? "
+<script>window.addEvent('domready', function() {
+{$this->js}
+});</script>
+" : '');
   }
   
   /**

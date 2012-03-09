@@ -34,7 +34,17 @@ abstract class PbvSubPagesAbstract extends PbvAbstract {
 
   public function _html() {
     if (!isset($this->oPagesTreeTpl)) return '';
-    //$js = 'new ';
+    if (Misc::isAdmin())
+      $this->js .= <<<JS
+var block = Ngn.pageBlocks.blocks[{$this->oPBM['id']}];
+block.replaceEditBlockBtn({
+  name: 'editPage', title: 'Редактировать разделы'
+}, function() {
+  new Ngn.Dialog.TreeEdit.Pages({
+    blockId: {$this->oPBM['id']}
+  });
+});
+JS;
     return $this->oPagesTreeTpl->html();
   }
   

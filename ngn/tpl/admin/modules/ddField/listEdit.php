@@ -42,7 +42,7 @@ Ngn.cp.Dfp = new Class({
   dfpType2classes: {
     list: ['Ngn.FieldSet'],
     tagsFlat: ['Ngn.FieldSet'],
-    tagsTree: ['Ngn.TreeEditTags']
+    tagsTree: ['Ngn.TreeEdit.Tags']
   },
   
   initDfp: function(dfpType) {

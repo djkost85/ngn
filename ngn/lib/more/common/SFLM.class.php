@@ -77,7 +77,9 @@ class SFLM {
       'i/css/common/sound.css',
       'i/css/common/briefcase.css',
       'i/css/common/userGroup.css',
-      'i/css/common/treeTagsDialog.css'
+      'i/css/common/treeDialog.css',
+      'i/css/common/imagedRadio.css',
+      's2/css/common/pageModules',
     ),
     // ----------- End of main libs --------------
     'jdGallery' => array(
@@ -221,8 +223,9 @@ class SFLM {
       //'i/js/ngn/Ngn.ContextMenuPages.js',
       'i/js/ngn/Ngn.RequestFieldsSelect.js',
       'i/js/ngn/Ngn.Dialog.NewPage.js',
-      'i/js/ngn/Ngn.TreeEditPages.js',
-      'i/js/ngn/Ngn.TreeEditTags.js',
+      'i/js/ngn/Ngn.TreeEdit.Pages.js',
+      'i/js/ngn/Ngn.TreeEdit.Pages.cp.js',
+      'i/js/ngn/Ngn.TreeEdit.Tags.js',
       //'i/js/ngn/Ngn.ContextMenu.js',
       //'i/js/firebug.js',
       'i/js/ngn/Ngn.ItemsTablePages.js',
@@ -234,12 +237,11 @@ class SFLM {
       'i/js/ngn/Ngn.initConfigManager.js',
       'i/js/MooCountdown.js',
       'partialJob',
-      'pageBlocks'
+      'pageBlocks',
     ),
     'pageLink' => array(
       'i/js/ngn/Ngn.DropdownWin.js',
       'treeEdit',
-      'i/js/ngn/Ngn.TreeEditPages.js',
       'i/js/ngn/Ngn.frm.Page.js'
     ),
     'form' => array(
@@ -323,13 +325,19 @@ class SFLM {
       'i/js/ngn/Ngn.site.top.js',
       'i/js/ngn/Ngn.site.top.briefcase.js',
       'm/js/site.js',
-      'i/js/ngn/Ngn.BlockEditDialog.js',
-      'i/js/ngn/Ngn.EditTreeTagsDialog.js',
+      'i/js/ngn/Ngn.Dialog.BlockEdit.js',
+      'i/js/ngn/Ngn.Dialog.TreeEdit.js',
+      'i/js/ngn/Ngn.Dialog.TreeEdit.Tags.js',
+      'i/js/ngn/Ngn.TreeEdit.Pages.js',
+      'i/js/ngn/Ngn.TreeEdit.Pages.site.js',
+      'i/js/ngn/Ngn.Dialog.NewPage.js',
+      'i/js/ngn/Ngn.Dialog.TreeEdit.Pages.js',
       'site.userGroup',
-      'pageBlocks'
+      'pageBlocks',
+      'i/js/ngn/Ngn.frm.ImagedRadio.js'
     ),
     'site.userGroup' => array(
-      'i/js/ngn/Ngn.TreeEditTags.js',
+      'i/js/ngn/Ngn.TreeEdit.Tags.js',
       'i/js/ngn/Ngn.site.userGroup.js',
     ),
     'site.ddItems' => array(

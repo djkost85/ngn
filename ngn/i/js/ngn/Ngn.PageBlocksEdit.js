@@ -169,6 +169,12 @@ Ngn.PageBlockEdit = new Class({
     }).get();
   },
   
+  replaceEditBlockBtn: function(opts, func) {
+    var eCur = this.eEditBlock.getElement('.sm-'+opts.name);
+    if (eCur) eCur.dispose();
+    this.addEditBlockBtn(opts, func);
+  },
+  
   addEditBlockBtn: function(opts, func) {
     Ngn.smBtn(opts).toDOM()[0].inject(this.eEditBlock, 'top').addEvent('click', function(e) {
       e.preventDefault();

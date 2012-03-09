@@ -46,6 +46,7 @@ class Form extends FormBase {
   public function __construct(Fields $oFields, array $options = array()) {
     $this->oFields = $oFields;
     parent::__construct($options);
+    $this->init();
   }
   
   protected function init() {}

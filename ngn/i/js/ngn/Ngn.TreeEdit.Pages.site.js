@@ -5,6 +5,7 @@ Ngn.TreeEdit.Pages.site = new Class({
     new Ngn.Dialog.NewModulePageSimple({
       pageId: this.tree.selected.data.id,
       onSubmitSuccess: function() {
+        this.reload();
         this.fireEvent('update');
       }.bind(this)
     });

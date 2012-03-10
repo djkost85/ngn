@@ -57,7 +57,7 @@ class SubPaPhotoImport extends SubPa {
       if (isset($data['images'])) {
         foreach ($data['images'] as $v) {
           $oIM->create(array(
-            'title' => $data['filenameAsTitle'] ? File::stripExt($v['name']) : '',
+            'title' => !empty($data['filenameAsTitle']) ? File::stripExt($v['name']) : '',
             'image' => $v
           ) + $this->oPA->getItemParams());
         }

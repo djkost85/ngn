@@ -12,8 +12,8 @@ return array (
       array (
         'id' => 'phone',
         'title' => 'Телефоны',
-        'x' => '623px',
-        'y' => '25px',
+        'x' => '621px',
+        'y' => '23px',
         'allowAdmin' => true,
       ),
       1 => 

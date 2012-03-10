@@ -3,7 +3,7 @@
 class PcsaDdItems extends Pcsa {
 
   public function action(array $initSettings) {
-    if ($initSettings['manualOrder']) {
+    if (!empty($initSettings['manualOrder'])) {
       if (!O::get('DdFields', $initSettings['strName'])->exists('oid')) {
         O::get('DdFieldsManager', $initSettings['strName'])->create(array(
           'title' => LANG_ORDER_NUM,

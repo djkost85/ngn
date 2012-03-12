@@ -4,7 +4,8 @@ Ngn.TreeEdit.Pages = new Class({
   options: {
     id: 'tePages',
     enableLocalStorage: false,
-    actionUrl: '/admin/pages'
+    actionUrl: '/admin/pages',
+    activeIfSelected: ['delete', 'openPage']
   },
   
   getActiveButtonNames: function() {
@@ -31,10 +32,13 @@ Ngn.TreeEdit.Pages = new Class({
     }.bind(this));
   },
   
+  
+  
   toggleButtons: function() {
     this.parent();
     this.tree.addEvent('selectChange', function(node) {
       this.toggleButton('add', node.data.folder == 1);
+      this.toggleButton('openPage', this.tree.selected ? true : false);
     }.bind(this));
   }
   

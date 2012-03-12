@@ -18,6 +18,7 @@ Ngn.Dialog.Auth = new Class({
   },
   
   initialize: function(opts) {
+    opts = opts || {};
     opts.ok = this.submit.bind(this);
     this.parent(opts);
     this.toggle('ok', false);
@@ -27,9 +28,10 @@ Ngn.Dialog.Auth = new Class({
   },
   
   submit: function() {
-    this.loading(true);
     var formId = this.tabs.tabs[this.tabs.selected].name;
+    if (!this.forms[formId].validator.validate()) return;
     this.forms[formId].submitAjax();
+    this.loading(true);
   },
   
   vkInitialized: false,

@@ -9,10 +9,10 @@ margin-right: 5px;
 text-align: center;
 }
 .type_imagedRadio .radio:hover {
-border-color: #CCC;
-background-color: #EFEFEF;
-}
-.type_imagedRadio .radio.selected {
 background-color: #FFF4BF;
 border-color: #F1CA7E;
+}
+.type_imagedRadio .radio.selected {
+border-color: #CCC;
+background-color: #EFEFEF;
 }

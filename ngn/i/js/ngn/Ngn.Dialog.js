@@ -460,7 +460,6 @@ Ngn.Dialog.Resizeble = new Class({
       handle: this.eHandle,
       modifiers: {y: 'height', x: null},
       onComplete: function() {
-        c(eResizeble.getSize().y);
         Ngn.storage.set(storeK, eResizeble.getSize().y);
       }
     });
@@ -764,3 +763,15 @@ Ngn.Dialog.HtmlPage = new Class({
   }
   
 });
+
+Ngn.Dialog.openWhenClosed = function(closingDialogObject, openDialogClass, options) {
+  var id = function() {
+    c('*');
+	if (!closingDialogObject.closed) return;
+    clearInterval(id);
+    new openDialogClass(options);
+  }.periodical(500);
+};
+
+
+

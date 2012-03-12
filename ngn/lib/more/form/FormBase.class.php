@@ -115,6 +115,7 @@ class FormBase extends Options2 {
    * @return FieldEAbstract
    */
   public function getElement($name) {
+    $this->setElementsDataDefault();
     if (!isset($this->els[$name])) return false;
     return $this->els[$name];
   }

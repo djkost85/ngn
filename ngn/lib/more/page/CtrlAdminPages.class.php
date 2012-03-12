@@ -195,6 +195,10 @@ class CtrlAdminPages extends CtrlAdminPagesBase {
     return $this->actionJsonFormUpdate(new EditPagePropForm($this->pageId, $this->god));
   }
   
+  public function action_json_editPagePropSimple() {
+  	return $this->actionJsonFormUpdate(new EditPagePropSimpleForm($this->pageId, $this->god));
+  }
+  
   public function action_json_getTree() {
     $this->json = O::get('MifTreePages')->getTree();
   }

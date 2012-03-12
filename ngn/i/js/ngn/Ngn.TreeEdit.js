@@ -9,7 +9,8 @@ Ngn.TreeEdit = new Class({
     folderOpenIcon: 'mif-tree-folder-open-icon',  // default css class open icon
     folderCloseIcon: 'mif-tree-folder-close-icon', // default css class close icon
     pageIcon: 'mif-tree-page-icon',  // default css class open icon
-    mifTreeOptions: {}
+    mifTreeOptions: {},
+    activeIfSelected: ['rename', 'delete']
     // buttons: element container with buttons
   },
   
@@ -329,19 +330,12 @@ Ngn.TreeEdit = new Class({
     this.buttons[name].toggle(flag);
   },
   
-  getActiveButtonNames: function() {
-    return ['rename', 'delete'];
-  },
-  
   toggleButtons: function() {
     for (var name in this.buttons) this.toggleButton(name, false);
-    var activeNames = this.getActiveButtonNames();
     this.tree.addEvent('selectChange', function(node) {
-      if (node.tree.selected) {
-        // Включаем, если существует выбранный нод
-        for (var i=0; i<activeNames.length; i++)
-          this.toggleButton(activeNames[i], this.tree.selected);
-      }
+      // Включаем, если существует выбранный нод
+      for (var i=0; i<this.options.activeIfSelected.length; i++)
+        this.toggleButton(this.options.activeIfSelected[i], this.tree.selected ? true : false);
     }.bind(this));
   },
   

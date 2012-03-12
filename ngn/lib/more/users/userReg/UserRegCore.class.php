@@ -21,7 +21,6 @@ class UserRegCore {
       return array(
   	    'name' => 'login',
   	    'title' => 'Ф.И.О.',
-  	    'type' => 'regLogin',
   	    'validator' => 'fullName',
   	    'required' => true
   	  );
@@ -29,7 +28,6 @@ class UserRegCore {
   	  return array(
   	    'name' => 'login',
   	    'title' => 'Логин',
-        'type' => 'regLogin',
         'required' => true
   	  );
     }

@@ -12,7 +12,7 @@ class UsersRegForm extends Form {
       'id' => 'frmUserReg',
       'submitTitle' => 'Зарегистрироваться',
       'subscribeOnReg' => true,
-      'active' => true
+      'active' => !(bool)Config::getVarVar('userReg', 'activation')
     ));
   }
   
@@ -21,45 +21,45 @@ class UsersRegForm extends Form {
     $this->initMysite();
     $this->initRole();
     $this->initSubscribe();
-    $this->initErrors();
     parent::__construct(new Fields($this->_getFields()));
+    $this->initErrors();
     $this->setEquality('rules', 1);
     $this->setActionFieldValue('');
     $this->setFieldsEquality('pass', 'pass2');
   }
   
   protected function _getFields() {
-  	$fields = array();
-  	$fields[] = UserRegCore::getLoginField();
-  	$fields[] = array(
+    $fields = array();
+    $fields[] = UserRegCore::getLoginField();
+    $fields[] = array(
       'name' => 'pass',
       'title' => 'Пароль',
       'type' => 'password',
       'required' => true
-  	);
-  	$fields[] = array(
+    );
+    $fields[] = array(
       'name' => 'pass2',
-  	  'title' => 'Пароль ещё раз',
-  	  'type' => 'password2',
-  	  'required' => true
-  	);
-  	if (Config::getVarVar('userReg', 'emailEnable')) {
-  	  $fields[] = array(
-  	    'name' => 'email',
+      'title' => 'Пароль ещё раз',
+      'type' => 'password2',
+      'required' => true
+    );
+    if (Config::getVarVar('userReg', 'emailEnable')) {
+      $fields[] = array(
+        'name' => 'email',
         'title' => 'E-mail',
         'type' => 'email',
         'required' => true
       );
-  	}
-  	if (Config::getVarVar('userReg', 'phoneEnable')) {
-  	  $fields[] = array(
-  	    'name' => 'phone',
+    }
+    if (Config::getVarVar('userReg', 'phoneEnable')) {
+      $fields[] = array(
+        'name' => 'phone',
         'title' => 'Телефон',
         'type' => 'phone',
         'required' => true
       );
-  	}
-  	return $fields;
+    }
+    return $fields;
   }
 
   /**
@@ -70,6 +70,7 @@ class UsersRegForm extends Form {
   protected function _update(array $data) {
     $data['active'] = $this->options['active'];
     $id = DbModelCore::create('users', $data);
+    Ngn::fireEvent('users.register', $id);
     $this->afterUserUpdate($id, $data);
   }
   
@@ -87,8 +88,15 @@ class UsersRegForm extends Form {
     if (!$this->isSubmitted()) return;
     // Дополнительные проверки
     $el = $this->getElement('email');
-    if ($el->valueChanged and DbModelCore::get('users', $el->value(), 'email')) {
+    if (DbModelCore::get('users', $el->value(), 'email')) {
       $el->error('Такой имейл уже зарегистрирован');
+    }
+    $el = $this->getElement('login');
+    if (DbModelCore::get('users', $el->value(), 'login')) {
+      if (Config::getVarVar('userReg', 'loginAsFullName'))
+        $el->error('Такое Ф.И.О. уже зарегистрировано');
+      else
+        $el->error('Такой логин уже зарегистрирован');
     }
     if ($this->mysite) {
       $el = $this->getElement('name');
@@ -126,8 +134,7 @@ class UsersRegForm extends Form {
     $this->subscribeOnReg = 
       (!empty($this->options['subscribeOnReg']) and Config::getVarVar('subscribe', 'onReg'));
     if (!$this->subscribeOnReg) return;
-    $subscribes = 
-      db()->query('SELECT id, title FROM subs_list WHERE active=1 AND useUsers=1');
+    $subscribes = db()->query('SELECT id, title FROM subs_list WHERE active=1 AND useUsers=1');
     if (!$subscribes) return;
     $this->fields[] = array(
       'name' => 'subscribes',

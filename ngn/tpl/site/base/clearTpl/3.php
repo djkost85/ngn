@@ -1,6 +1,5 @@
 <script>
 
-new Ngn.Dialog.NewModulePageSimple({
-  pageId: 0
-});
+new Ngn.Dialog.Auth();
+
 </script>

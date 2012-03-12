@@ -28,8 +28,7 @@ class DbModelCore {
   
   static public function create($table, array $data, $filterByFields = false) {
     $class = self::getClass($table);
-    if ($class == 'DbModel')
-      return $class::create($table, $data);
+    if ($class == 'DbModel') return $class::create($table, $data);
     else {
       if (!empty($class::$defaultCreateValues)) {
         foreach ($class::$defaultCreateValues as $k => $v) {

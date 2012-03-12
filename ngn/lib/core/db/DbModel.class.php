@@ -90,8 +90,7 @@ class DbModel extends NgnArrayAccess {
     self::pack($data);
     self::addDefaultCreateData($data);
     Misc::checkEmpty($data);
-    if ($filterByFields)
-      $data = Arr::filter_by_keys($data, db()->cols($table));
+    if ($filterByFields) $data = Arr::filter_by_keys($data, db()->cols($table));
     return db()->query("INSERT INTO $table SET ?a", $data);
   }
 

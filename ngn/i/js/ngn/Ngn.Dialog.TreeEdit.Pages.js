@@ -14,8 +14,8 @@ Ngn.Dialog.TreeEdit.Pages = new Class({
   <div class="treeMenu iconsSet">\
     <small>\
       <a href="#" class="add dgray"><i></i>Создать</a>\
-      <a href="#" class="rename dgray"><i></i>Переименовать</a>\
       <a href="#" class="link dgray"><i></i>Открыть</a>\
+      <a href="#" class="editProp dgray"><i></i>Параметры</a>\
       <a href="#" class="delete dgray"><i></i>Удалить</a>\
     </small>\
     <div class="clear"><!-- --></div>\

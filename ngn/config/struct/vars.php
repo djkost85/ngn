@@ -530,6 +530,12 @@ return array(
           'admin' => 'только администратором' 
         )
       ), 
+      'noActivation' => array('type' => 'header'),
+      'authorizeAfterReg' => array(
+        'title' => 'Авторизовывать после регистрации',
+      	'type' => 'bool'
+      ),
+      'other' => array('type' => 'header'),
       'emailEnable' => array(
         'title' => "Включить заполнение e-mail'a при регистрации",
         'type' => 'bool'
@@ -539,11 +545,7 @@ return array(
         'type' => 'bool'
       ),
       'loginAsFullName' => array(
-        'title' => "Использовать логин, как полное имя",
-        'type' => 'bool'
-      ),
-      'authorizeAfterReg' => array(
-        'title' => 'Авторизовывать после регистрации',
+        'title' => "Использовать поле логин для ФИО",
         'type' => 'bool'
       ),
       'vkAuthEnable' => array(
@@ -582,6 +584,13 @@ return array(
       'redirectToFirstPage' => array(
         'title' => 'Перенаправлять после авторизации с фронтенда на первый раздел из указанных выше',
         'type' => 'bool'
+      ),
+    ),
+    'visibilityConditions' => array(
+      array(
+        'headerName' => 'noActivation',
+        'condFieldName' => 'activation',
+        'cond' => 'v == false',
       )
     )
   ),
@@ -806,39 +815,6 @@ return array(
       'title' => array(
         'title' => 'Раздел', 
         'type' => 'pageId'
-      )
-    )
-  ),
-  'pageBlocksSettings' => array(
-    'title' => 'Размеры блоков по умолчанию', 
-    'static' => true, 
-    'fields' => array(
-      'colsN' => array(
-        'title' => 'Количество колонок', 
-        'type' => 'select',
-        'options' => array(
-          1 => 1,
-          2 => 2,
-          3 => 3,
-          4 => 4,
-          5 => 5,
-        )
-      ), 
-      'w' => array(
-        'title' => 'Ширина всех блоков вместе (пикселей)', 
-        'type' => 'num'
-      ), 
-      'rh' => array(
-        'title' => 'Высота единичного блока (пикселей)', 
-        'type' => 'num'
-      ), 
-      'mr' => array(
-        'title' => 'Отступ справа от блока', 
-        'type' => 'num'
-      ),
-      'mb' => array(
-        'title' => 'Отступ снизу от блока', 
-        'type' => 'num'
       )
     )
   ),

@@ -43,6 +43,7 @@ class SFLM {
     ),
     'adminExtra' => array(
       's2/css/common/pageModules',
+      'i/css/common/editPages.css',
       'i/css/common/miftree.css', // необходим для кнопки добавления ссылки на раздел
     ),
     'admin' => array(
@@ -146,6 +147,7 @@ class SFLM {
       'i/js/ngn/Ngn.js',
       's2/js/common/Ngn.js',
       'i/js/ngn/Ngn.frm.js',
+      'i/js/ngn/Ngn.frm.imagedRadio.js',
       //'i/js/ngn/Ngn.frm.FieldSet.js',
     ),
     'common' => array(
@@ -326,6 +328,7 @@ class SFLM {
       'i/js/ngn/Ngn.site.top.briefcase.js',
       'm/js/site.js',
       'i/js/ngn/Ngn.Dialog.BlockEdit.js',
+      'i/js/ngn/Ngn.Dialog.TreeResizeble.js',
       'i/js/ngn/Ngn.Dialog.TreeEdit.js',
       'i/js/ngn/Ngn.Dialog.TreeEdit.Tags.js',
       'i/js/ngn/Ngn.TreeEdit.Pages.js',

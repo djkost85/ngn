@@ -7,7 +7,8 @@ Ngn.TreeEdit.Pages.cp = new Class({
   },
   
   add: function() {
-    this.twoScreens.openModuleCreateDialog(this.tree.selected.data.id);
+    this.twoScreens.openModuleCreateDialog(
+      this.tree.selected ? this.tree.selected.data.id : 0);
   },
   
   createPage: function() {

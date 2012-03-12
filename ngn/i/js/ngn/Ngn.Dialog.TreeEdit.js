@@ -8,7 +8,8 @@ Ngn.Dialog.TreeEdit = new Class({
     width: 400,
     dialogClass: 'dialog treeDialog',
     bindBuildMessageFunction: true,
-    resizeble: Ngn.Dialog.TreeResizeble
+    resizeble: Ngn.Dialog.TreeResizeble,
+    resizeble2: Ngn.Dialog.TreeResizeble
   }
   
 });

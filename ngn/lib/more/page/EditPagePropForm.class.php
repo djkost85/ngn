@@ -1,23 +1,16 @@
 <?php
 
-class EditPagePropForm extends Form {
+class EditPagePropForm extends EditPagePropFormBase {
 
-  protected $pageId;
-  
   public function __construct($pageId, $god) {
-    $this->pageId = $pageId;
+    $this->god = $god;
+  	parent::__construct($pageId);
     $this->options['filterEmpties'] = true;
-    $fields = array(
-      array(
-        'title' => 'Название раздела',
-        'name' => 'title',
-        'required' => true
-      ),
-      array(
-        'title' => 'Каталог',
-        'name' => 'folder',
-        'type' => 'boolCheckbox'
-      ),
+    $this->addVisibilityCondition('linkSection', 'module', 'v == "link"');
+  }
+  
+  protected function _getFields() {
+    $fields = array_merge(parent::_getFields(), array(
       array(
         'name' => 'linkSection',
         'type' => 'headerVisibilityCondition'
@@ -45,13 +38,13 @@ class EditPagePropForm extends Form {
         'title' => 'Сделать главной страницей',
         'name' => 'home',
         'type' => 'boolCheckbox'
-      ),
-    );
-    if ($god) {
+      )
+    ));
+    if ($this->god) {
       $fields[] = array(
         'title' => 'Модуль',
         'name' => 'module'
-      );
+       );
       $fields[] = array(
         'type' => 'pageController',
         'name' => 'controller'
@@ -63,13 +56,7 @@ class EditPagePropForm extends Form {
         'type' => 'hidden'
       );
     }
-    $this->addVisibilityCondition('linkSection', 'module', 'v == "link"');
-    parent::__construct(new Fields($fields));
-    $this->setElementsData(DbModelCore::get('pages', $this->pageId)->r);
-  }
-  
-  protected function _update(array $data) {
-    DbModelCore::update('pages', $this->pageId, $data);
+    return $fields;
   }
 
 }
